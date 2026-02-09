@@ -1,17 +1,17 @@
 import BasePage from './BasePage'
-import { usernameInput, passwordInput, loginButton } from '../selectors/android/login.selectors'
+import selectors from '../selectors/android/login.selectors'
 
 class LoginPage extends BasePage {
   get username() {
-    return $(usernameInput)
+    return $(selectors.usernameInput)
   }
 
   get password() {
-    return $(passwordInput)
+    return $(selectors.passwordInput)
   }
 
   get loginBtn() {
-    return $(loginButton)
+    return $(selectors.loginButton)
   }
 
   async login(user, pass) {
