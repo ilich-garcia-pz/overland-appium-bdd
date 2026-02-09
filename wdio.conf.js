@@ -1,6 +1,10 @@
-const { androidCaps } = require('./config/capabilities.android')
+import { androidCaps } from './config/capabilities.android.js';
+import { iosCaps } from './config/capabilities.ios.js';
 
-exports.config = {
+const platform = (process.env.PLATFORM || 'android').toLowerCase();
+const selectedCaps = platform === 'ios' ? iosCaps : androidCaps;
+
+export const config = {
     //
     // ====================
     // Runner Configuration
@@ -54,7 +58,7 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
 
-    capabilities: [androidCaps],
+    capabilities: [selectedCaps],
 
     //
     // ===================

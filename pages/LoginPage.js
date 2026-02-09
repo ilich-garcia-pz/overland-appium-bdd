@@ -1,24 +1,24 @@
-import BasePage from './BasePage'
-import selectors from '../selectors/android/login.selectors'
+import BasePage from './BasePage';
+import selectors from '../selectors/android/login.selectors';
 
 class LoginPage extends BasePage {
   get username() {
-    return $(selectors.usernameInput)
+    return $(selectors.usernameInput);
   }
 
   get password() {
-    return $(selectors.passwordInput)
+    return $(selectors.passwordInput);
   }
 
   get loginBtn() {
-    return $(selectors.loginButton)
+    return $(selectors.loginButton);
   }
 
   async login(user, pass) {
-    await this.type(this.username, user)
-    await this.type(this.password, pass)
-    await this.click(this.loginBtn)
+    await this.type(this.username, user);
+    await this.type(this.password, pass);
+    await this.click(this.loginBtn);
   }
 }
 
-export default new LoginPage()
+export default new LoginPage();

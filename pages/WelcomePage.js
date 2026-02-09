@@ -1,13 +1,13 @@
-import BasePage from './BasePage'
-import { welcomeNextBtn, welcomeFullNameInput } from '../selectors/android/login.selectors'
+import BasePage from './BasePage';
+import { welcomeNextBtn, welcomeFullNameInput } from '../selectors/android/login.selectors';
 
 class WelcomePage extends BasePage {
   get welcomeNextBtn() {
-    return $(welcomeNextBtn)
+    return $(welcomeNextBtn);
   }
 
   get welcomeFullNameInput() {
-    return $(welcomeFullNameInput)
+    return $(welcomeFullNameInput);
   }
 
   async enterFullName(fullName) {
@@ -15,4 +15,4 @@ class WelcomePage extends BasePage {
   }
 }
 
-export default new WelcomePage()
+export default new WelcomePage();
