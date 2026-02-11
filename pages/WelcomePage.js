@@ -1,13 +1,13 @@
 import BasePage from './BasePage';
-import { selectors } from '../selectors/android/welcome.selectors';
+import { welcomeSelectors } from '../selectors';
 
 class WelcomePage extends BasePage {
   get welcomeNameInput() {
-    return $(selectors.welcomeNameInput);
+    return $(welcomeSelectors.welcomeNameInput);
   }
 
   get welcomeBusinessNameInput() {
-    return $(selectors.welcomeBusinessNameInput);
+    return $(welcomeSelectors.welcomeBusinessNameInput);
   }
 
   async enterName(name) {
