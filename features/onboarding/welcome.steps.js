@@ -10,7 +10,8 @@ When('the user is on the Welcome registration screen', async () => {
 });
 
 When('the user enters a name with 50 characters', async () => {
-  // await WelcomePage.enterFullName(fullName);
+  await WelcomePage.enterName("Hi, I'm Ilich");
+  await WelcomePage.enterBusinessName("Testing the automation");
 });
 
 Then('no validation error should be displayed', async () => {

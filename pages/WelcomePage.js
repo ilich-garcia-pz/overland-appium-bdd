@@ -1,17 +1,21 @@
 import BasePage from './BasePage';
-import { welcomeNextBtn, welcomeFullNameInput } from '../selectors/android/login.selectors';
+import { selectors } from '../selectors/android/welcome.selectors';
 
 class WelcomePage extends BasePage {
-  get welcomeNextBtn() {
-    return $(welcomeNextBtn);
+  get welcomeNameInput() {
+    return $(selectors.welcomeNameInput);
   }
 
-  get welcomeFullNameInput() {
-    return $(welcomeFullNameInput);
+  get welcomeBusinessNameInput() {
+    return $(selectors.welcomeBusinessNameInput);
   }
 
-  async enterFullName(fullName) {
-    await this.type(this.welcomeFullNameInput, fullName);
+  async enterName(name) {
+    await this.type(this.welcomeNameInput, name);
+  }
+
+  async enterBusinessName(businessName) {
+    await this.type(this.welcomeBusinessNameInput, businessName);
   }
 }
 
