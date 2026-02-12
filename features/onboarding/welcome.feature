@@ -1,4 +1,4 @@
-Feature: User Registration - Welcome Screen
+Feature: User Registration (Welcome Screen)
   As a new mobile user
   I want to complete the registration form
   So that I can proceed to the next step
@@ -6,6 +6,11 @@ Feature: User Registration - Welcome Screen
 Background:
   Given the user opens the mobile application
   And the user is on the Welcome registration screen
+
+Scenario: Welcome screen initial state
+  Then the title "Welcome" should be displayed
+  And all input fields should be visible
+  And the "Next" button should be disabled
 
 Scenario: Name accepts up to 50 characters
   When the user enters a name with 50 characters

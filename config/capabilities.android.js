@@ -9,7 +9,7 @@ export const androidCaps = {
   // App
   'appium:app': 'C:/Users/ilich/Downloads/Overland/Automation/overland-appium-bdd/overland.apk',
 
-  // PERFORMANCE / STABILITY.
+  // Performance / Stability
   'appium:noReset': false,
   'appium:newCommandTimeout': 300,
   'appium:appWaitActivity': '*'
