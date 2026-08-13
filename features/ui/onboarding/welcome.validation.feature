@@ -17,3 +17,8 @@ Feature: Welcome screen validation rules
   Scenario: Name accepts up to 50 characters
     When the user enters a name with 50 characters
     Then no validation error should be displayed
+
+  Scenario: Name exceeds 50 characters
+    When the user enters more than 50 characters in the Name field
+    Then no validation error should be displayed below the Name field
+    And the "Next" button should be enabled

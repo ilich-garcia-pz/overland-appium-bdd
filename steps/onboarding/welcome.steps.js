@@ -14,11 +14,11 @@ Then('the title "Welcome" should be displayed', async () => {
   expect(await WelcomePage.isWelcomeTitleDisplayed(welcomeTestData.titles.welcomeTitle)).toEqual(true);
 });
 
-When('all input fields should be visible', async () => {
+Then('all input fields should be visible', async () => {
   expect(await WelcomePage.areInputsVisible()).toEqual(true);
 });
 
-When('the "Next" button should be enabled', async () => {
+Then('the "Next" button should be enabled', async () => {
   expect(await WelcomePage.isNextButtonEnabled()).toEqual(true);
 });
 
@@ -29,4 +29,16 @@ When('the user enters a name with 50 characters', async () => {
 
 Then('no validation error should be displayed', async () => {
   expect(await WelcomePage.hasNoValidationErrors()).toEqual(true);
+});
+
+When('the user enters more than 50 characters in the Name field', async () => {
+  await WelcomePage.enterName(welcomeTestData.names.overMaxLengthName);
+});
+
+Then('no validation error should be displayed below the Name field', async () => {
+  expect(await WelcomePage.welcomeNameError.isDisplayed()).toEqual(false);
+});
+
+When('the user enters a business name with 100 characters', async () => {
+  await WelcomePage.enterBusinessName(welcomeTestData.names.validBusinessName);
 });
