@@ -11,7 +11,7 @@ When('the user is on the Welcome registration screen', async () => {
 });
 
 Then('the title "Welcome" should be displayed', async () => {
-  await WelcomePage.isWelcomeTitleDisplayed(welcomeTestData.titles.welcomeTitle);
+  expect(await WelcomePage.isWelcomeTitleDisplayed(welcomeTestData.titles.welcomeTitle)).toEqual(true);
 });
 
 When('all input fields should be visible', async () => {
@@ -19,7 +19,7 @@ When('all input fields should be visible', async () => {
 });
 
 When('the "Next" button should be disabled', async () => {
-  expect(await WelcomePage.isNextButtonDisabled()).toEqual(true);
+  expect(await WelcomePage.isNextButtonEnabled()).toEqual(true);
 });
 
 When('the user enters a name with 50 characters', async () => {

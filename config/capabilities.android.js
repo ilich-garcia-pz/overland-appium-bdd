@@ -7,7 +7,7 @@ export const androidCaps = {
   'appium:udid': 'RFCW221YSLF',
 
   // App
-  'appium:app': 'C:/Users/ilich/Downloads/Overland/Automation/overland-appium-bdd/overland.apk',
+  'appium:app': 'C:/Users/ilich/Downloads/Overland/Automation/overland-appium-bdd/overland-staging.apk',
 
   // Performance / Stability
   'appium:noReset': false,

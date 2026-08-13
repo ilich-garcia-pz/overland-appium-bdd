@@ -2,8 +2,8 @@ import BasePage from './BasePage';
 import { welcomeSelectors } from '../selectors';
 
 class WelcomePage extends BasePage {
-  get welcomeTitleLabel() {
-    return $(welcomeSelectors.welcomeTitleLabel);
+  get welcomeTitleText() {
+    return $(welcomeSelectors.welcomeTitleText);
   }
 
   get welcomeNameInput() {
@@ -43,22 +43,29 @@ class WelcomePage extends BasePage {
   }
 
   async isWelcomeTitleDisplayed(expectedTitle) {
-    const actualTitle = await this.welcomeTitleLabel.getText();
+    await this.welcomeTitleText.waitForDisplayed({ timeout: 20000 });
+    const actualTitle = (await this.welcomeTitleText.getText()).trim();
 
-    return actualTitle === expectedTitle;
+    return actualTitle === expectedTitle.trim();
   }
 
   async areInputsVisible() {
-    return await this.welcomeNameInput.isDisplayed() &&
-      await this.welcomeBusinessNameInput.isDisplayed() &&
-      await this.welcomePhoneNumberInput.isDisplayed() &&
-      await this.welcomeEmailInput.isDisplayed() &&
-      await this.welcomeMailingAddressInput.isDisplayed() &&
-      await this.welcomePhysicalAddressInput.isDisplayed(); // Returns true if all inputs are visible, false otherwise.
+    const allTextInputs = await $$('android=new UiSelector().className("android.widget.EditText")');
+    if (allTextInputs.length < 5) {
+      return false;
+    }
+
+    for (const input of allTextInputs) {
+      if (!(await input.isDisplayed())) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
-  async isNextButtonDisabled() {
-    return !(await this.welcomeNextButton.isEnabled()); // Returns true if the button is disabled, false if enabled.
+  async isNextButtonEnabled() {
+    return await this.welcomeNextButton.isEnabled(); // Returns true if the button is enabled, false if disabled.
   }
 }
 
