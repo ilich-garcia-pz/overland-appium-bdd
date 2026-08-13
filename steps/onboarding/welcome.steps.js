@@ -24,7 +24,6 @@ Then('the "Next" button should be enabled', async () => {
 
 When('the user enters a name with 50 characters', async () => {
   await WelcomePage.enterName(welcomeTestData.names.validName);
-  await WelcomePage.enterBusinessName(welcomeTestData.names.validBusinessName);
 });
 
 Then('no validation error should be displayed', async () => {
@@ -41,4 +40,12 @@ Then('no validation error should be displayed below the Name field', async () =>
 
 When('the user enters a business name with 100 characters', async () => {
   await WelcomePage.enterBusinessName(welcomeTestData.names.validBusinessName);
+});
+
+When('the user enters more than 100 characters in the Business Name field', async () => {
+  await WelcomePage.enterBusinessName(welcomeTestData.names.overMaxLengthBusinessName);
+});
+
+Then('no validation error should be displayed below the Business Name field', async () => {
+  expect(await WelcomePage.welcomeBusinessNameError.isDisplayed()).toEqual(false);
 });

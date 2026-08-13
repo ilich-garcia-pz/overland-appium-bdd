@@ -3,7 +3,7 @@ export const welcomeTestData = {
     validName: 'Rosetta Kuhn',
     validBusinessName: 'Bradtke - Steuber',
     overMaxLengthName: 'A'.repeat(51),
-    overMaxLengthBusinessName: 'A'.repeat(101),
+    overMaxLengthBusinessName: 'B'.repeat(101),
   },
   titles : {
     welcomeTitle: 'Welcome'
