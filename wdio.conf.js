@@ -3,6 +3,8 @@ import { iosCaps } from './config/capabilities.ios.js';
 
 const platform = (process.env.PLATFORM || 'android').toLowerCase();
 const selectedCaps = platform === 'ios' ? iosCaps : androidCaps;
+const featureGlob = process.env.FEATURE_GLOB || './features/{ui,e2e}/**/*.feature';
+const tags = process.env.TAGS || '';
 
 export const config = {
     //
@@ -29,7 +31,7 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        ['./features/**/welcome.feature']
+        [featureGlob]
     ],
     // Patterns to exclude.
     exclude: [
@@ -137,7 +139,7 @@ export const config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./features/**/welcome.steps.js'],
+        require: ['./steps/**/*.steps.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -155,7 +157,7 @@ export const config = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: '',
+        tags,
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
