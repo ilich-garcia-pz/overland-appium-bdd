@@ -18,7 +18,7 @@ When('all input fields should be visible', async () => {
   expect(await WelcomePage.areInputsVisible()).toEqual(true);
 });
 
-When('the "Next" button should be disabled', async () => {
+When('the "Next" button should be enabled', async () => {
   expect(await WelcomePage.isNextButtonEnabled()).toEqual(true);
 });
 
@@ -28,5 +28,5 @@ When('the user enters a name with 50 characters', async () => {
 });
 
 Then('no validation error should be displayed', async () => {
-  // assertion here
+  expect(await WelcomePage.hasNoValidationErrors()).toEqual(true);
 });

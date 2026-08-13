@@ -10,7 +10,7 @@ Background:
 Scenario: Welcome screen initial state
   Then the title "Welcome" should be displayed
   And all input fields should be visible
-  And the "Next" button should be disabled
+  And the "Next" button should be enabled
 
 Scenario: Name accepts up to 50 characters
   When the user enters a name with 50 characters

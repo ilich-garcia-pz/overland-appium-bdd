@@ -14,8 +14,8 @@ class WelcomePage extends BasePage {
     return $(welcomeSelectors.welcomeBusinessNameInput);
   }
 
-  get welcomePhoneNumberInput() {
-    return $(welcomeSelectors.welcomePhoneNumberInput);
+  get welcomePhoneInput() {
+    return $(welcomeSelectors.welcomePhoneInput);
   }
 
   get welcomeEmailInput() {
@@ -34,6 +34,30 @@ class WelcomePage extends BasePage {
     return $(welcomeSelectors.welcomeNextButton);
   }
 
+  get welcomeNameError() {
+    return $(welcomeSelectors.welcomeNameError);
+  }
+
+  get welcomeBusinessNameError() {
+    return $(welcomeSelectors.welcomeBusinessNameError);
+  }
+
+  get welcomePhoneError() {
+    return $(welcomeSelectors.welcomePhoneError);
+  }
+
+  get welcomeEmailError() {
+    return $(welcomeSelectors.welcomeEmailError);
+  }
+
+  get welcomeMailingAddressError() {
+    return $(welcomeSelectors.welcomeMailingAddressError);
+  }
+
+  get welcomePhysicalAddressError() {
+    return $(welcomeSelectors.welcomePhysicalAddressError);
+  }
+
   async enterName(name) {
     await this.type(this.welcomeNameInput, name);
   }
@@ -43,20 +67,36 @@ class WelcomePage extends BasePage {
   }
 
   async isWelcomeTitleDisplayed(expectedTitle) {
-    await this.welcomeTitleText.waitForDisplayed({ timeout: 20000 });
+    const isVisible = await this.waitForDisplayedWithOptionalScroll(this.welcomeTitleText, {
+      timeout: 20000,
+      scrollIfNeeded: false
+    });
+    if (!isVisible) {
+      return false;
+    }
+
     const actualTitle = (await this.welcomeTitleText.getText()).trim();
 
     return actualTitle === expectedTitle.trim();
   }
 
   async areInputsVisible() {
-    const allTextInputs = await $$('android=new UiSelector().className("android.widget.EditText")');
-    if (allTextInputs.length < 5) {
-      return false;
-    }
+    const inputs = [
+      this.welcomeNameInput,
+      this.welcomeBusinessNameInput,
+      this.welcomePhoneInput,
+      this.welcomeEmailInput,
+      this.welcomeMailingAddressInput,
+      this.welcomePhysicalAddressInput
+    ];
 
-    for (const input of allTextInputs) {
-      if (!(await input.isDisplayed())) {
+    for (const input of inputs) {
+      const isVisible = await this.waitForDisplayedWithOptionalScroll(input, {
+        timeout: 10000,
+        scrollIfNeeded: true,
+        maxScrolls: 5
+      });
+      if (!isVisible) {
         return false;
       }
     }
@@ -65,7 +105,39 @@ class WelcomePage extends BasePage {
   }
 
   async isNextButtonEnabled() {
+    const isVisible = await this.waitForDisplayedWithOptionalScroll(this.welcomeNextButton, {
+      timeout: 10000,
+      scrollIfNeeded: true,
+      maxScrolls: 6
+    });
+    if (!isVisible) {
+      return false;
+    }
+
     return await this.welcomeNextButton.isEnabled(); // Returns true if the button is enabled, false if disabled.
+  }
+
+  async hasNoValidationErrors() {
+    const validationErrorSelectors = [
+      welcomeSelectors.welcomeNameError,
+      welcomeSelectors.welcomeBusinessNameError,
+      welcomeSelectors.welcomePhoneError,
+      welcomeSelectors.welcomeEmailError,
+      welcomeSelectors.welcomeMailingAddressError,
+      welcomeSelectors.welcomePhysicalAddressError
+    ];
+
+    for (const errorSelector of validationErrorSelectors) {
+      const elements = await $$(errorSelector);
+      if (elements.length > 0) {
+        const isVisible = await elements[0].isDisplayed();
+        if (isVisible) {
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 }
 
