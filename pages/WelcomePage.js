@@ -66,6 +66,10 @@ class WelcomePage extends BasePage {
     await this.type(this.welcomeBusinessNameInput, businessName);
   }
 
+  async enterPhoneNumber(phoneNumber) {
+    await this.type(this.welcomePhoneInput, phoneNumber);
+  }
+
   async isWelcomeTitleDisplayed(expectedTitle) {
     const isVisible = await this.waitForDisplayedWithOptionalScroll(this.welcomeTitleText, {
       timeout: 20000,
