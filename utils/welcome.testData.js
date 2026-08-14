@@ -9,6 +9,9 @@ export const welcomeTestData = {
     validPhoneNumber: '5855650242',
     overMaxLengthPhoneNumber: '58556502421'
   },
+  emails : {
+    validEmail: 'rosetta.kuhn@example.com'
+  },
   titles : {
     welcomeTitle: 'Welcome'
   }

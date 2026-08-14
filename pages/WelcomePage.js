@@ -70,6 +70,10 @@ class WelcomePage extends BasePage {
     await this.type(this.welcomePhoneNumberInput, phoneNumber);
   }
 
+  async enterEmail(email) {
+    await this.type(this.welcomeEmailInput, email);
+  }
+
   async isWelcomeTitleDisplayed(expectedTitle) {
     const isVisible = await this.waitForDisplayedWithOptionalScroll(this.welcomeTitleText, {
       timeout: 20000,

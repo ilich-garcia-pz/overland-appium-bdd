@@ -37,6 +37,10 @@ When('the user tries to enter more than 10 characters in the Phone Number field'
   await WelcomePage.enterPhoneNumber(welcomeTestData.phoneNumbers.overMaxLengthPhoneNumber); // 11 digits.
 });
 
+When('the user enters a valid email address', async () => {
+  await WelcomePage.enterEmail(welcomeTestData.emails.validEmail);
+});
+
 // THENs.
 
 Then('the title "Welcome" should be displayed', async () => {
@@ -65,4 +69,8 @@ Then('no validation error should be displayed below the Business Name field', as
 
 Then('no validation error should be displayed below the Phone Number field', async () => {
   expect(await WelcomePage.welcomePhoneNumberError.isDisplayed()).toEqual(false);
+});
+
+Then('no validation error should be displayed below the Email field', async () => {
+  expect(await WelcomePage.welcomeEmailError.isDisplayed()).toEqual(false);
 });

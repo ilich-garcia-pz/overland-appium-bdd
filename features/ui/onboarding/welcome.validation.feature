@@ -40,3 +40,8 @@ Feature: Welcome screen validation rules
     When the user tries to enter more than 10 characters in the Phone Number field
     Then no validation error should be displayed below the Phone Number field
     And the "Next" button should be enabled
+
+  @wip
+  Scenario: Valid email address format
+    When the user enters a valid email address
+    Then no validation error should be displayed below the Email field
