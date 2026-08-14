@@ -14,8 +14,8 @@ class WelcomePage extends BasePage {
     return $(welcomeSelectors.welcomeBusinessNameInput);
   }
 
-  get welcomePhoneInput() {
-    return $(welcomeSelectors.welcomePhoneInput);
+  get welcomePhoneNumberInput() {
+    return $(welcomeSelectors.welcomePhoneNumberInput);
   }
 
   get welcomeEmailInput() {
@@ -42,8 +42,8 @@ class WelcomePage extends BasePage {
     return $(welcomeSelectors.welcomeBusinessNameError);
   }
 
-  get welcomePhoneError() {
-    return $(welcomeSelectors.welcomePhoneError);
+  get welcomePhoneNumberError() {
+    return $(welcomeSelectors.welcomePhoneNumberError);
   }
 
   get welcomeEmailError() {
@@ -67,7 +67,7 @@ class WelcomePage extends BasePage {
   }
 
   async enterPhoneNumber(phoneNumber) {
-    await this.type(this.welcomePhoneInput, phoneNumber);
+    await this.type(this.welcomePhoneNumberInput, phoneNumber);
   }
 
   async isWelcomeTitleDisplayed(expectedTitle) {
@@ -88,7 +88,7 @@ class WelcomePage extends BasePage {
     const inputs = [
       this.welcomeNameInput,
       this.welcomeBusinessNameInput,
-      this.welcomePhoneInput,
+      this.welcomePhoneNumberInput,
       this.welcomeEmailInput,
       this.welcomeMailingAddressInput,
       this.welcomePhysicalAddressInput
@@ -125,7 +125,7 @@ class WelcomePage extends BasePage {
     const validationErrorSelectors = [
       welcomeSelectors.welcomeNameError,
       welcomeSelectors.welcomeBusinessNameError,
-      welcomeSelectors.welcomePhoneError,
+      welcomeSelectors.welcomePhoneNumberError,
       welcomeSelectors.welcomeEmailError,
       welcomeSelectors.welcomeMailingAddressError,
       welcomeSelectors.welcomePhysicalAddressError

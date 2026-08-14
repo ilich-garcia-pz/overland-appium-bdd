@@ -18,7 +18,7 @@ When('the user enters a name with 50 characters', async () => {
 });
 
 When('the user tries to enter more than 50 characters in the Name field', async () => {
-  await WelcomePage.enterName(welcomeTestData.names.overMaxLengthName);
+  await WelcomePage.enterName(welcomeTestData.names.overMaxLengthName); // 51 characters.
 });
 
 When('the user enters a business name with 100 characters', async () => {
@@ -26,11 +26,15 @@ When('the user enters a business name with 100 characters', async () => {
 });
 
 When('the user tries to enter more than 100 characters in the Business Name field', async () => {
-  await WelcomePage.enterBusinessName(welcomeTestData.names.overMaxLengthBusinessName);
+  await WelcomePage.enterBusinessName(welcomeTestData.names.overMaxLengthBusinessName); // 101 characters.
 });
 
-When('the user enters exactly 10 digits in the "Phone Number" field', async () => {
+When('the user enters exactly 10 digits in the Phone Number field', async () => {
   await WelcomePage.enterPhoneNumber(welcomeTestData.phoneNumbers.validPhoneNumber);
+});
+
+When('the user tries to enter more than 10 characters in the Phone Number field', async () => {
+  await WelcomePage.enterPhoneNumber(welcomeTestData.phoneNumbers.overMaxLengthPhoneNumber); // 11 digits.
 });
 
 // THENs.
@@ -57,4 +61,8 @@ Then('no validation error should be displayed below the Name field', async () =>
 
 Then('no validation error should be displayed below the Business Name field', async () => {
   expect(await WelcomePage.welcomeBusinessNameError.isDisplayed()).toEqual(false);
+});
+
+Then('no validation error should be displayed below the Phone Number field', async () => {
+  expect(await WelcomePage.welcomePhoneNumberError.isDisplayed()).toEqual(false);
 });

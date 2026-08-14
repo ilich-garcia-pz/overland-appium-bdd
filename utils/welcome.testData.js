@@ -7,6 +7,7 @@ export const welcomeTestData = {
   },
   phoneNumbers : {
     validPhoneNumber: '5855650242',
+    overMaxLengthPhoneNumber: '58556502421'
   },
   titles : {
     welcomeTitle: 'Welcome'

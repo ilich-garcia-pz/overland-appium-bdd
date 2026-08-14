@@ -33,5 +33,10 @@ Feature: Welcome screen validation rules
     And the "Next" button should be enabled
 
   Scenario: Valid phone number
-    When the user enters exactly 10 digits in the "Phone Number" field
+    When the user enters exactly 10 digits in the Phone Number field
     Then no validation error should be displayed
+  
+  Scenario: Phone Number does not exceed 10 characters
+    When the user tries to enter more than 10 characters in the Phone Number field
+    Then no validation error should be displayed below the Phone Number field
+    And the "Next" button should be enabled
