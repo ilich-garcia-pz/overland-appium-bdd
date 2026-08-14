@@ -41,6 +41,15 @@ When('the user enters a valid email address', async () => {
   await WelcomePage.enterEmail(welcomeTestData.emails.validEmail);
 });
 
+When('the user enters an invalid email address', async () => {
+  await WelcomePage.enterEmail(welcomeTestData.emails.invalidEmail);
+});
+
+When('the user clicks on the "Next" button', async () => {
+  expect(await WelcomePage.isNextButtonEnabled()).toEqual(true);
+  await WelcomePage.clickNextButton();
+});
+
 // THENs.
 
 Then('the title "Welcome" should be displayed', async () => {
@@ -73,4 +82,8 @@ Then('no validation error should be displayed below the Phone Number field', asy
 
 Then('no validation error should be displayed below the Email field', async () => {
   expect(await WelcomePage.welcomeEmailError.isDisplayed()).toEqual(false);
+});
+
+Then('an inline error message should be displayed below the "Email" field', async () => {
+  expect(await WelcomePage.welcomeEmailError.isDisplayed()).toEqual(true);
 });

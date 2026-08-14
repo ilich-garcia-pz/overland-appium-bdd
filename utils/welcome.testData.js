@@ -10,7 +10,8 @@ export const welcomeTestData = {
     overMaxLengthPhoneNumber: '58556502421'
   },
   emails : {
-    validEmail: 'rosetta.kuhn@example.com'
+    validEmail: 'rosetta.kuhn@example.com',
+    invalidEmail: 'rosetta.kuhn@example' // Missing top-level domain.
   },
   titles : {
     welcomeTitle: 'Welcome'

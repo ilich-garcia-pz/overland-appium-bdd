@@ -74,6 +74,10 @@ class WelcomePage extends BasePage {
     await this.type(this.welcomeEmailInput, email);
   }
 
+  async clickNextButton() {
+    await this.click(this.welcomeNextButton);
+  }
+
   async isWelcomeTitleDisplayed(expectedTitle) {
     const isVisible = await this.waitForDisplayedWithOptionalScroll(this.welcomeTitleText, {
       timeout: 20000,

@@ -65,6 +65,17 @@ class BasePage {
       throw new Error('Element was not visible for click action.');
     }
 
+    try {
+      await driver.hideKeyboard();
+    } catch {
+      // Keyboard might already be closed.
+    }
+
+    const isEnabled = await element.isEnabled();
+    if (!isEnabled) {
+      throw new Error('Element is visible but disabled, click action was not performed.');
+    }
+
     await element.click();
   }
 

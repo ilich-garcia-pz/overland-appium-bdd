@@ -41,7 +41,12 @@ Feature: Welcome screen validation rules
     Then no validation error should be displayed below the Phone Number field
     And the "Next" button should be enabled
 
-  @wip
   Scenario: Valid email address format
     When the user enters a valid email address
     Then no validation error should be displayed below the Email field
+
+  @wip
+  Scenario: Invalid email format
+    When the user enters an invalid email address
+    And the user clicks on the "Next" button
+    Then an inline error message should be displayed below the "Email" field
