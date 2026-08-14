@@ -84,6 +84,6 @@ Then('no validation error should be displayed below the Email field', async () =
   expect(await WelcomePage.welcomeEmailError.isDisplayed()).toEqual(false);
 });
 
-Then('an inline error message should be displayed below the "Email" field', async () => {
+Then('an inline error message should be displayed below the Email field', async () => {
   expect(await WelcomePage.welcomeEmailError.isDisplayed()).toEqual(true);
 });
