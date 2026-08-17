@@ -8,8 +8,15 @@ Feature: Create user from Welcome flow
     Given the user opens the mobile application
     And the user is on the Welcome registration screen
 
-  Scenario: User can provide valid Welcome data without validation errors
-    Then the title "Welcome" should be displayed
+  @wip
+  Scenario: User completes the Welcome form successfully
     When the user enters a name with 50 characters
-    Then no validation error should be displayed
-    And the "Next" button should be enabled
+    And the user enters a business name with 100 characters
+    And the user enters exactly 10 digits in the Phone Number field
+    And the user enters a valid email address
+    And the user types a mailing address
+    And the user selects a mailing address from Google Places suggestions
+    And the user types a physical address
+    And the user selects a physical address from Google Places suggestions
+    And the user clicks on the "Next" button
+    Then the user should be navigated to the next onboarding step

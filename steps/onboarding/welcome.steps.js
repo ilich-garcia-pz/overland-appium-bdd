@@ -1,6 +1,8 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import WelcomePage from '../../pages/WelcomePage';
+import PreferencesPage from '../../pages/PreferencesPage';
 import { welcomeTestData } from '../../utils/welcome.testData';
+import { preferencesTestData } from '../../utils/preferences.testData';
 
 // GIVENs.
 
@@ -110,4 +112,8 @@ Then('no validation error should be displayed below the Mailing Address field', 
 
 Then('no validation error should be displayed below the Physical Address field', async () => {
   expect(await WelcomePage.welcomePhysicalAddressError.isDisplayed()).toEqual(false);
+});
+
+Then('the user should be navigated to the next onboarding step', async () => {
+  expect(await PreferencesPage.isTitleDisplayed(preferencesTestData.titles.preferencesTitle)).toEqual(true);
 });

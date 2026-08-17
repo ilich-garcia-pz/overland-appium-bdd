@@ -2,12 +2,58 @@ import BasePage from './BasePage';
 import { preferencesSelectors } from '../selectors';
 
 class PreferencesPage extends BasePage {
-  get firstPreferenceButton() {
-    return $(preferencesSelectors.firstPreferenceButton);
+  get titleText() {
+    return $(preferencesSelectors.titleText);
+  }
+
+  get dairyCattleCheckbox() {
+    return $(preferencesSelectors.dairyCattleCheckbox);
+  }
+
+  get beefAndFeedersCheckbox() {
+    return $(preferencesSelectors.beefAndFeedersCheckbox);
+  }
+
+  get videoAuctionCheckbox() {
+    return $(preferencesSelectors.videoAuctionCheckbox);
+  }
+
+  get liveAuctionCheckbox() {
+    return $(preferencesSelectors.liveAuctionCheckbox);
+  }
+
+  get dairyDispersalCheckbox() {
+    return $(preferencesSelectors.dairyDispersalCheckbox);
+  }
+
+  get equipmentCheckbox() {
+    return $(preferencesSelectors.equipmentCheckbox);
+  }
+
+  get allCheckbox() {
+    return $(preferencesSelectors.allCheckbox);
+  }
+
+  get preferencesGetStartedButton() {
+    return $(preferencesSelectors.preferencesGetStartedButton);
+  }
+
+  async isTitleDisplayed(expectedTitle) {
+    const isVisible = await this.waitForDisplayedWithOptionalScroll(this.titleText, {
+      timeout: 20000,
+      scrollIfNeeded: false
+    });
+    if (!isVisible) {
+      return false;
+    }
+
+    const actualTitle = (await this.titleText.getText()).trim();
+
+    return actualTitle === expectedTitle.trim();
   }
 
   async selectFirstPreference() {
-    await this.click(this.firstPreferenceButton);
+    await this.click(this.dairyCattleCheckbox);
   }
 }
 
