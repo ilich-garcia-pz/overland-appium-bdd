@@ -20,3 +20,6 @@ Feature: Create user from Welcome flow
     And the user selects a physical address from Google Places suggestions
     And the user clicks on the "Next" button
     Then the user should be navigated to the next onboarding step
+    When the user selects Equipment preference
+    And the user clicks on the "Get Started" button
+    Then the user should be navigated to the Home screen

@@ -1,11 +1,13 @@
 import { selectors as preferencesSelectors } from './android/preferences.selectors';
 import { selectors as welcomeSelectors } from './android/welcome.selectors';
+import { selectors as homeSelectors } from './android/home.selectors';
 
 const platform = driver.capabilities.platformName;
 
 const androidSelectors = {
   ...welcomeSelectors,
-  ...preferencesSelectors
+  ...preferencesSelectors,
+  ...homeSelectors
 };
 
 const iOSSelectors = {
@@ -21,6 +23,5 @@ export const getSelector = (selectorKey) => {
   return selectors[platform.toLowerCase()][selectorKey];
 };
 
-// Exportar selectores por página para importación directa
-export { welcomeSelectors, preferencesSelectors };
-// export { selectors as preferencesSelectors } from './android/preferences.selectors';
+// Export selectors by page to import directly.
+export { welcomeSelectors, preferencesSelectors, homeSelectors };

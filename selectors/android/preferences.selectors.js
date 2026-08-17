@@ -8,5 +8,6 @@ export const selectors = {
   liveAuctionCheckbox: byResourceId('preferences_live_auction_checkbox'),
   dairyDispersalCheckbox: byResourceId('preferences_dairy_dispersal_checkbox'),
   equipmentCheckbox: byResourceId('preferences_equipment_checkbox'),
-  allCheckbox: byResourceId('preferences_all_checkbox')
+  allCheckbox: byResourceId('preferences_all_checkbox'),
+  getStartedButton: byResourceId('preferences_get_started_button')
 };

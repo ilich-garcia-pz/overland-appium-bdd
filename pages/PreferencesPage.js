@@ -2,6 +2,7 @@ import BasePage from './BasePage';
 import { preferencesSelectors } from '../selectors';
 
 class PreferencesPage extends BasePage {
+  // Getters.
   get titleText() {
     return $(preferencesSelectors.titleText);
   }
@@ -34,8 +35,42 @@ class PreferencesPage extends BasePage {
     return $(preferencesSelectors.allCheckbox);
   }
 
-  get preferencesGetStartedButton() {
-    return $(preferencesSelectors.preferencesGetStartedButton);
+  get getStartedButton() {
+    return $(preferencesSelectors.getStartedButton);
+  }
+
+  // Functions.
+
+  async clickDairyCattleCheckbox() {
+    await this.click(this.dairyCattleCheckbox);
+  }
+
+  async clickBeefAndFeedersCheckbox() {
+    await this.click(this.beefAndFeedersCheckbox);
+  }
+
+  async clickVideoAuctionCheckbox() {
+    await this.click(this.videoAuctionCheckbox);
+  }
+
+  async clickLiveAuctionCheckbox() {
+    await this.click(this.liveAuctionCheckbox);
+  }
+
+  async clickDairyDispersalCheckbox() {
+    await this.click(this.dairyDispersalCheckbox);
+  }
+
+  async clickEquipmentCheckbox() {
+    await this.click(this.equipmentCheckbox);
+  }
+
+  async clickAllCheckbox() {
+    await this.click(this.allCheckbox);
+  }
+
+  async clickGetStartedButton() {
+    await this.click(this.getStartedButton);
   }
 
   async isTitleDisplayed(expectedTitle) {
