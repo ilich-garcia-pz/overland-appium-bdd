@@ -74,6 +74,46 @@ class WelcomePage extends BasePage {
     await this.type(this.welcomeEmailInput, email);
   }
 
+  async enterMailingAddress(mailingAddress) {
+    await this.type(this.welcomeMailingAddressInput, mailingAddress);
+  }
+
+  async selectAddressSuggestionForInput(inputElement, addressText) {
+    if (!inputElement) {
+      throw new Error('Input element is required to select a Google Places suggestion.');
+    }
+
+    if (typeof addressText !== 'string') {
+      throw new Error('Address text must be a string to select a Google Places suggestion.');
+    }
+
+    const trimmedAddress = addressText.trim();
+    if (!trimmedAddress) {
+      throw new Error('Address text is required to select a Google Places suggestion.');
+    }
+
+    const inputLocation = await inputElement.getLocation();
+    const inputSize = await inputElement.getSize();
+    const tapX = Math.round(inputLocation.x + (inputSize.width / 2));
+    const tapY = Math.round(inputLocation.y + inputSize.height + 80);
+
+    await driver.pause(900);
+    await driver.execute('mobile: clickGesture', { x: tapX, y: tapY });
+    await driver.pause(250);
+  }
+
+  async selectMailingAddressFromGooglePlacesSuggestions(addressText) {
+    await this.selectAddressSuggestionForInput(this.welcomeMailingAddressInput, addressText);
+  }
+
+  async selectPhysicalAddressFromGooglePlacesSuggestions(addressText) {
+    await this.selectAddressSuggestionForInput(this.welcomePhysicalAddressInput, addressText);
+  }
+
+  async enterPhysicalAddress(physicalAddress) {
+    await this.type(this.welcomePhysicalAddressInput, physicalAddress);
+  }
+
   async clickNextButton() {
     await this.click(this.welcomeNextButton);
   }

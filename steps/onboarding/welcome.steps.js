@@ -50,6 +50,22 @@ When('the user clicks on the "Next" button', async () => {
   await WelcomePage.clickNextButton();
 });
 
+When('the user types a mailing address', async () => {
+  await WelcomePage.enterMailingAddress(welcomeTestData.addresses.mailingAddressQuery);
+});
+
+When('the user selects a mailing address from Google Places suggestions', async () => {
+  await WelcomePage.selectMailingAddressFromGooglePlacesSuggestions(welcomeTestData.addresses.mailingAddressQuery);
+});
+
+When('the user types a physical address', async () => {
+  await WelcomePage.enterPhysicalAddress(welcomeTestData.addresses.physicalAddressQuery);
+});
+
+When('the user selects a physical address from Google Places suggestions', async () => {
+  await WelcomePage.selectPhysicalAddressFromGooglePlacesSuggestions(welcomeTestData.addresses.physicalAddressQuery);
+});
+
 // THENs.
 
 Then('the title "Welcome" should be displayed', async () => {
@@ -86,4 +102,12 @@ Then('no validation error should be displayed below the Email field', async () =
 
 Then('an inline error message should be displayed below the Email field', async () => {
   expect(await WelcomePage.welcomeEmailError.isDisplayed()).toEqual(true);
+});
+
+Then('no validation error should be displayed below the Mailing Address field', async () => {
+  expect(await WelcomePage.welcomeMailingAddressError.isDisplayed()).toEqual(false);
+});
+
+Then('no validation error should be displayed below the Physical Address field', async () => {
+  expect(await WelcomePage.welcomePhysicalAddressError.isDisplayed()).toEqual(false);
 });

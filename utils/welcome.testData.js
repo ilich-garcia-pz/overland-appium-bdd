@@ -1,4 +1,7 @@
 export const welcomeTestData = {
+  titles : {
+    welcomeTitle: 'Welcome'
+  },
   names : {
     validName: 'Rosetta Kuhn',
     validBusinessName: 'Bradtke - Steuber',
@@ -13,7 +16,8 @@ export const welcomeTestData = {
     validEmail: 'rosetta.kuhn@example.com',
     invalidEmail: 'rosetta.kuhn@example' // Missing top-level domain.
   },
-  titles : {
-    welcomeTitle: 'Welcome'
+  addresses: {
+    mailingAddressQuery: '1000 Main St',
+    physicalAddressQuery: '9191 Westminter Blvd.'
   }
 };

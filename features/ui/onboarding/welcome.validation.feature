@@ -45,8 +45,19 @@ Feature: Welcome screen validation rules
     When the user enters a valid email address
     Then no validation error should be displayed below the Email field
 
-  @wip
   Scenario: Invalid email address format
     When the user enters an invalid email address
     And the user clicks on the "Next" button
     Then an inline error message should be displayed below the Email field
+
+  @wip
+  Scenario: Mailing address selected from Google Places
+    When the user types a mailing address
+    And the user selects a mailing address from Google Places suggestions
+    Then no validation error should be displayed below the Mailing Address field
+
+  @wip
+  Scenario: Physical address selected from Google Places
+    When the user types a physical address
+    And the user selects a physical address from Google Places suggestions
+    Then no validation error should be displayed below the Physical Address field
